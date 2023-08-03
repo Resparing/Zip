@@ -19,10 +19,6 @@ A small library used to help with C++ developers!
         - int8_t (8 bit integer)
         - int32_t (32 bit integer / Default)
 
-    - All Floating Point Number typedefs including:
-        - float8_t (8 bit floating point number)
-        - float32_t (32 bit floating point number)
-
 
 ### Options
 1. Encrypt Logs(Will Encrypt With AES Encryption)
