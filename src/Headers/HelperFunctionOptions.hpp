@@ -1,0 +1,2 @@
+//Header Guard
+#pragma once
