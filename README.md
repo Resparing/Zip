@@ -19,6 +19,20 @@ A small library used to help with C++ developers!
         - int8_t (8 bit integer)
         - int32_t (32 bit integer / Default)
 
+3. OS Version
+    - Will Give Out OS Version:
+
+        - Windows (32 bit or 64 bit)
+        - Apple
+            - iOS Embedded
+            - iPhone Simulator
+            - iPhone
+            - Mac
+        - Unix
+        - Android
+        - Linux
+        - Unknown (If cannot find OS)
+
 
 ### Options
 1. Encrypt Logs(Will Encrypt With AES Encryption)
