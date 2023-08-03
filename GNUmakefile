@@ -2,6 +2,9 @@
 APP_NAME = main
 APP_DIR = bin/
 
+#Log Path
+LOG_PATH = bin/log.txt
+
 #C++ Files
 CPP_FILES = $(wildcard src/cpp/*.cpp) $(wildcard src/Header/cpp/*.cpp)
 
@@ -43,7 +46,7 @@ clear:
 
 #Will Clear the Log
 clearLog:
-	rm log.txt
+	rm $(LOG_PATH)
 
 #Publish - Unfinished
 publish:
