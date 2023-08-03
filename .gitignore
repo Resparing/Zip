@@ -1,0 +1,8 @@
+#MacOS Files
+.DS_Store
+
+#Visual Studio Code Files
+.vscode/
+
+#Output Files
+bin/**
