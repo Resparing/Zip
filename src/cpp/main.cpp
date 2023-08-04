@@ -1,4 +1,5 @@
-#include "../Headers/print.hpp"
+#include <cstdlib>
+#include <print.hpp>
 
 int main(void)
 {
