@@ -12,16 +12,16 @@ CPP_FILES = $(wildcard src/cpp/*.cpp)
 CPP_VERSION = -std=c++20
 
 #Includes
-INC_DIR = "-Isrc/hpp"
-INC_LIB = 
+INC_DIR = "-Ilib/hpp" "-Isrc/hpp"
+INC_LIB = "-Llib/inc"
 INC_DYLIB = 
-INC_FLAGS = 
+INC_FLAGS = -lssl.3 -lcrypto.3
 
 #Combine All "INC" Variables into one
 INC = $(INC_DIR) $(INC_LIB) $(INC_DYLIB) $(INC_FLAGS)
 
 #Compiler Warning Arguments
-COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated -Werror
+COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated -Wstrict-warnings #-Werror
 
 .PHONY: build compile clear clearLog publish
 

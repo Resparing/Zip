@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <openssl/aes.h>
 
 //Include Options
 #include <HelperFunctionOptions.hpp>
