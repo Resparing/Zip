@@ -34,7 +34,6 @@ build:
 	./$(APP_DIR)$(APP_NAME)
 
 	make clear
-	make clearLog
 
 #Compile C++ Project
 compile:

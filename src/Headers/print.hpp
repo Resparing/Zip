@@ -19,12 +19,23 @@ namespace PRIVATE
 
         return oss.str();
     }
+
+    //Add to File Log
+    void appendLog(std::string message)
+    {
+        std::fstream file;
+        file.open(OPTIONS::logPath, std::fstream::in | std::fstream::out | std::fstream::app);
+
+        file << message << '\n';
+
+        file.close();
+    }
 }
 
 
 /* Functions */
 
-//Clear Log.txt
+//Clear Log
 void clearLog(void)
 {
     std::fstream file;
@@ -41,7 +52,10 @@ void fullPrintLog(const int lineNumber, std::string filePath, const Args&... arg
     std::string message = PRIVATE::joinArgs(' ', args...);
     std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Add to Log
+    PRIVATE::appendLog(fullMessage);
 
+    //Output Message
     std::cout << fullMessage << '\n';
 }
 
@@ -54,6 +68,10 @@ void fullPrintLogWarning(const int lineNumber, std::string filePath, const Args&
     std::string message = PRIVATE::joinArgs(' ', args...);
     std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Add to Log
+    PRIVATE::appendLog(fullMessage);
+
+    //Output Message
     std::cout << fullMessage << '\n';
 }
 
@@ -66,6 +84,10 @@ void fullPrintLogError(const int lineNumber, std::string filePath, const Args&..
     std::string message = PRIVATE::joinArgs(' ', args...);
     std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Add to Log
+    PRIVATE::appendLog(fullMessage);
+
+    //Output Message
     std::cout << fullMessage << '\n';
 }
 
