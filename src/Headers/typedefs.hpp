@@ -1,6 +1,7 @@
 //Header Guard
 #pragma once
 
+/* Integer */
 //8 Bit Integer
 #ifndef _INT8_T
     #define _INT8_T
@@ -48,4 +49,9 @@
 #ifndef _U_INT64_T
     #define _U_INT64_T
     typedef unsigned long int64_t;
+#endif
+
+/* String */
+#ifdef _LIBCPP_STRING
+    typedef std::string string_t;
 #endif
