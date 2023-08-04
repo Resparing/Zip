@@ -1,6 +1,10 @@
-#include <iostream>
+#include "../Headers/print.hpp"
 
-int main()
+int main(void)
 {
-    std::cout << "Hello, World!" << std::endl;
+    clearLog();
+
+    printLog("Hello, World!");
+
+    return EXIT_SUCCESS;
 }
