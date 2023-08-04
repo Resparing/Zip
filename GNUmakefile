@@ -12,7 +12,7 @@ CPP_FILES = $(wildcard src/cpp/*.cpp)
 CPP_VERSION = -std=c++20
 
 #Includes
-INC_DIR = "-I/src/Headers"
+INC_DIR = "-I/src/hpp"
 INC_LIB = 
 INC_DYLIB = 
 INC_FLAGS = 
