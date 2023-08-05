@@ -6,3 +6,6 @@
 
 #Output Files
 bin/**
+
+#Libraries
+lib/openssl/
