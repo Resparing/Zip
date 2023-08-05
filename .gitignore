@@ -8,4 +8,4 @@
 bin/**
 
 #Libraries
-lib/hpp/openssl/
+lib/
