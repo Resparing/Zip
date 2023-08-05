@@ -4,11 +4,13 @@
 //Includes
 #include <string>
 
+#include <typedefs.hpp>
+
 #ifdef _WIN32
     #if _WIN64
-        std::string OS = "Windows - 64";
+        string_t OS = "Windows - 64";
     #else
-        std::string OS = "Windows - 32";
+        string_t OS = "Windows - 32";
     #endif
 
 #elif __APPLE__
@@ -17,27 +19,27 @@
 
     //Codnititions
     #if TARGET_OS_EMBEDDED
-        std::string OS = "Apple - iOS Embedded";
+        string_t OS = "Apple - iOS Embedded";
     #elif TARGET_IPHONE_SIMULATOR
-        std::string OS = "Apple - iPhone Simulator";
+        string_t OS = "Apple - iPhone Simulator";
     #elif TARGET_OS_IPHONE
-        std::string OS = "Apple - iPhone";
+        string_t OS = "Apple - iPhone";
     #elif TARGET_OS_MAC
-        std::string OS = "Apple - Mac";
+        string_t OS = "Apple - Mac";
     #else
-        std::string OS = "Apple";
+        string_t OS = "Apple";
     #endif
 
 #elif __unix__
-    std::string OS = "Unix";
+    string_t OS = "Unix";
 
 #elif __ANDROID__
-    std::string OS = "Android"
+    string_t OS = "Android"
 
 #elif __linux__
-    std::string OS = "Linux";
+    string_t OS = "Linux";
 
 #else
-    std::string OS = "Unknown";
+    string_t OS = "Unknown";
 
 #endif

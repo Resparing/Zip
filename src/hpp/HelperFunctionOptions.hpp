@@ -4,10 +4,12 @@
 //Includes
 #include <string>
 
+#include <typedefs.hpp>
+
 namespace OPTIONS
 {
     //Debug Items
     const bool debugOptionsEncrypted = false;
-    const std::string key = "";
-    const std::string logPath = "bin/Log.txt";
+    const string_t key = "";
+    const string_t logPath = "bin/Log.txt";
 }

@@ -1,6 +1,9 @@
 //Header Guard
 #pragma once
 
+//Includes
+#include <string>
+
 /* Integer */
 //8 Bit Integer
 #ifndef _INT8_T
@@ -52,6 +55,4 @@
 #endif
 
 /* String */
-#ifdef _LIBCPP_STRING
-    typedef std::string string_t;
-#endif
+typedef std::string string_t;

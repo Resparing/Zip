@@ -5,24 +5,31 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-#include <openssl/aes.h>
 
-//Include Options
 #include <HelperFunctionOptions.hpp>
+#include <typedefs.hpp>
 
 namespace PRIVATE
 {
     template <typename... Args>
-    std::string joinArgs(char delimeter, const Args&... args)
+    string_t joinArgs(const char delimeter, const Args&... args)
     {
         std::ostringstream oss;
-        ((oss << args << delimeter), ...);
+
+        if(delimeter != '\0')
+        {
+            ((oss << args << delimeter), ...);
+        }
+        else
+        {
+            ((oss << args), ...);
+        }
 
         return oss.str();
     }
 
     //Add to File Log
-    void appendLog(std::string message)
+    void appendLog(const string_t message)
     {
         std::fstream file;
         file.open(OPTIONS::logPath, std::fstream::in | std::fstream::out | std::fstream::app);
@@ -46,12 +53,12 @@ void clearLog(void)
 
 //Prints to the Screen
 template <typename... Args>  //Template
-void fullPrintLog(const int lineNumber, std::string filePath, const Args&... args)
+void fullPrintLog(const int lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
-    std::string information = PRIVATE::joinArgs('\0', '[', filePath, ": ", lineNumber, "] ");
-    std::string message = PRIVATE::joinArgs(' ', args...);
-    std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string_t information = PRIVATE::joinArgs('\0', '[', filePath, ": ", lineNumber, "] ");
+    string_t message = PRIVATE::joinArgs(' ', args...);
+    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Add to Log
     PRIVATE::appendLog(fullMessage);
@@ -62,12 +69,12 @@ void fullPrintLog(const int lineNumber, std::string filePath, const Args&... arg
 
 //Prints Warning to the Screen
 template <typename... Args>  //Template
-void fullPrintLogWarning(const int lineNumber, std::string filePath, const Args&... args)
+void fullPrintLogWarning(const int lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
-    std::string information = PRIVATE::joinArgs('\0', "[� ", filePath, ": ", lineNumber, "] ");
-    std::string message = PRIVATE::joinArgs(' ', args...);
-    std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string_t information = PRIVATE::joinArgs('\0', "[� ", filePath, ": ", lineNumber, "] ");
+    string_t message = PRIVATE::joinArgs(' ', args...);
+    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Add to Log
     PRIVATE::appendLog(fullMessage);
@@ -78,12 +85,12 @@ void fullPrintLogWarning(const int lineNumber, std::string filePath, const Args&
 
 //Prints Error to the Screen
 template <typename... Args>  //Template
-void fullPrintLogError(const int lineNumber, std::string filePath, const Args&... args)
+void fullPrintLogError(const int lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
-    std::string information = PRIVATE::joinArgs('\0', "[⚠️ ", filePath, ": ", lineNumber, "] ");
-    std::string message = PRIVATE::joinArgs(' ', args...);
-    std::string fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string_t information = PRIVATE::joinArgs('\0', "[⚠️ ", filePath, ": ", lineNumber, "] ");
+    string_t message = PRIVATE::joinArgs(' ', args...);
+    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Add to Log
     PRIVATE::appendLog(fullMessage);
