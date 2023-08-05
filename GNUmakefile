@@ -21,7 +21,7 @@ INC_FLAGS = -lssl.3 -lcrypto.3
 INC = $(INC_DIR) $(INC_LIB) $(INC_DYLIB) $(INC_FLAGS)
 
 #Compiler Warning Arguments
-COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated -Wstrict-warnings #-Werror
+COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated #-Werror
 
 .PHONY: build compile clear clearLog publish
 
