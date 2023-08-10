@@ -54,5 +54,9 @@
     typedef unsigned long int64_t;
 #endif
 
+/* Floating Point */
+typedef float float32_t;  //32 Bit Floating Point Number
+typedef double float64_t;  //64 Bit Floating Point Number
+
 /* String */
 typedef std::string string_t;

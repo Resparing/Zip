@@ -15,9 +15,19 @@ A small library used to help with C++ developers!
 
 
 2. Typedefs
-    - All Integer typedefs including:
+    - All Integer typedefs Including:
         - int8_t (8 bit integer)
+        - uint8_t (8 bit unsigned integer)
+        - int16_t (16 bit integer)
+        - uint16_t (16 bit unsinged integer)
         - int32_t (32 bit integer / Default)
+        - int8_t (8 bit integer)
+
+    - All Float typdefs Including:
+        - float32_t (32 bit floating point number / Default)
+        - float64_t (64 bit floating point number)
+
+    - String typedef
 
 3. OS Version
     - Will Give Out OS Version:
