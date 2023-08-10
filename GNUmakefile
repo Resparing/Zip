@@ -6,7 +6,7 @@ APP_DIR = bin/
 LOG_PATH = bin/log.txt
 
 #C++ Files
-CPP_FILES = $(wildcard src/cpp/*.cpp)
+CPP_FILES = $(wildcard src/cpp/*.cpp) $(wildcard src/hpp/cpp/*.cpp)
 
 #C++ Standard
 CPP_VERSION = -std=c++20
@@ -15,13 +15,13 @@ CPP_VERSION = -std=c++20
 INC_DIR = "-Ilib/hpp" "-Isrc/hpp"
 INC_LIB = "-Llib/inc"
 INC_DYLIB = 
-INC_FLAGS = -lssl.3 -lcrypto.3
+INC_FLAGS =
 
 #Combine All "INC" Variables into one
 INC = $(INC_DIR) $(INC_LIB) $(INC_DYLIB) $(INC_FLAGS)
 
 #Compiler Warning Arguments
-COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated #-Werror
+COMPILER_WARNING_ARGS =  -Wall -Wextra -Wpedantic -Wstrict-aliasing -Wconversion -Wshadow -Wdeprecated -Wno-unused-function #-Werror
 
 .PHONY: build compile clear clearLog publish
 
