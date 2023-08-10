@@ -2,17 +2,18 @@
 #pragma once
 
 //Includes
-#include <sstream>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 
-#include <HelperFunctionOptions.hpp>
-#include <typedefs.hpp>
+#include <zip/zipOptions.hpp>
+#include <zip/typedefs.hpp>
 
 namespace PRIVATE
 {
     template <typename... Args>
-    string_t joinArgs(const char delimeter, const Args&... args)
+    static string_t joinArgs(const char delimeter, const Args&... args)
     {
         std::ostringstream oss;
 
@@ -29,10 +30,10 @@ namespace PRIVATE
     }
 
     //Add to File Log
-    void appendLog(const string_t message)
+    static void appendLog(const string_t message)
     {
         std::fstream file;
-        file.open(OPTIONS::logPath, std::fstream::in | std::fstream::out | std::fstream::app);
+        file.open(PRINT::logPath, std::fstream::in | std::fstream::out | std::fstream::app);
 
         file << message << '\n';
 
@@ -40,20 +41,25 @@ namespace PRIVATE
     }
 }
 
+//Macros
+#define printLog(...) fullPrintLog(__LINE__, __FILE__, __VA_ARGS__)
+#define printLogWarning(...) fullPrintLogWarning(__LINE__, __FILE__, __VA_ARGS__)
+#define printLogError(...) fullPrintLogError(__LINE__, __FILE__, __VA_ARGS__)
+
 
 /* Functions */
 
 //Clear Log
-void clearLog(void)
+static void clearLog(void)
 {
     std::fstream file;
-    file.open(OPTIONS::logPath, std::fstream::in | std::fstream::out | std::fstream::trunc);
+    file.open(PRINT::logPath, std::fstream::in | std::fstream::out | std::fstream::trunc);
     file.close();
 }
 
 //Prints to the Screen
 template <typename... Args>  //Template
-void fullPrintLog(const int lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLog(const int32_t lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
     string_t information = PRIVATE::joinArgs('\0', '[', filePath, ": ", lineNumber, "] ");
@@ -69,7 +75,7 @@ void fullPrintLog(const int lineNumber, const string_t filePath, const Args&... 
 
 //Prints Warning to the Screen
 template <typename... Args>  //Template
-void fullPrintLogWarning(const int lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLogWarning(const int32_t lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
     string_t information = PRIVATE::joinArgs('\0', "[� ", filePath, ": ", lineNumber, "] ");
@@ -85,7 +91,7 @@ void fullPrintLogWarning(const int lineNumber, const string_t filePath, const Ar
 
 //Prints Error to the Screen
 template <typename... Args>  //Template
-void fullPrintLogError(const int lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLogError(const int32_t lineNumber, const string_t filePath, const Args&... args)
 {
     //Concatenate Message
     string_t information = PRIVATE::joinArgs('\0', "[⚠️ ", filePath, ": ", lineNumber, "] ");
@@ -98,8 +104,3 @@ void fullPrintLogError(const int lineNumber, const string_t filePath, const Args
     //Output Message
     std::cout << fullMessage << '\n';
 }
-
-//Defines
-#define printLog(...) fullPrintLog(__LINE__, __FILE__, __VA_ARGS__)
-#define printLogWarning(...) fullPrintLogWarning(__LINE__, __FILE__, __VA_ARGS__)
-#define printLogError(...) fullPrintLogError(__LINE__, __FILE__, __VA_ARGS__)

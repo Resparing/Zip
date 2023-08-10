@@ -4,7 +4,7 @@
 //Includes
 #include <string>
 
-#include <typedefs.hpp>
+#include <zip/typedefs.hpp>
 
 #ifdef _WIN32
     #if _WIN64
