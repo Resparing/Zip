@@ -4,14 +4,15 @@ A small library used to help with C++ developers!
 
 ### Functions
 1. Logging
-    - printLog
-        - Will Print the Script Directory, Line Number and Message (Can Have Multiple Messages)
+    - Better Version of `std::cout` Which can Accept Multiple Arguments, Options Include:
+        1. printLog
+            - Will Print the Script Directory, Line Number and Message (Can Have Multiple Messages)
 
-    - printLogWarning
-        - Will Print the Script Directory, Line Number, Warning Symbol and Message (Can Have Multiple Messages)
+        2. printLogWarning
+            - Will Print the Script Directory, Line Number, Warning Symbol and Message (Can Have Multiple Messages)
 
-    - printLogError
-        - Will Print the Script Directory, Line Number, Error Symbol and Message (Can Have Multiple Messages)
+        3. printLogError
+            - Will Print the Script Directory, Line Number, Error Symbol and Message (Can Have Multiple Messages)
 
 
 2. Typedefs
