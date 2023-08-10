@@ -46,5 +46,8 @@ A small library used to help with C++ developers!
 
 
 ### Options
-1. Encrypt Logs(Will Encrypt With AES Encryption)
-2. Will Save Logs to a Log File
+- Logging
+    1. Encrypt Logs(Will Encrypt With AES Encryption)
+    2. Will Save Logs to a Log File
+    3. Error Logs Will Throw Runtime Errors
+    4. Warning Logs Will Throw Runtime Errors
