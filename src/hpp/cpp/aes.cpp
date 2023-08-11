@@ -167,7 +167,24 @@ void mixColumns(unsigned char cipherBlock[4][4])
     //Iterate Over Columns
     for(uint8_t cols = 0; cols < 4; cols++)
     {
-        
+        //Column and Result Array
+        unsigned char column[4];
+        unsigned char result[4];
+
+        //Fill Out Column Array
+        for(uint8_t rows = 0; rows < 4; rows++)
+        {
+            column[rows] = cipherBlock[rows][cols];
+        }
+
+        //Convert Column
+        mixColumn(column, result);
+
+        //Add Column to State
+        for(uint8_t rows = 0; rows < 4; rows++)
+        {
+            mixedState[rows][cols] = result[rows];
+        }
     }
 
     //Copy Back Into Array
@@ -210,7 +227,7 @@ string_t encryptECB(string_t plainText, string_t key)
             }
         }
 
-/*        //Create Round Key
+       //Create Round Key
         unsigned char roundKey[4][4];
 
         //Key Expansion
@@ -232,25 +249,7 @@ string_t encryptECB(string_t plainText, string_t key)
         subBytes(cipherBlock);
         shiftRows(cipherBlock);
         addRoundKey(cipherBlock, roundKey);
-*/
-    }
-    unsigned char foo[4][4] = {
-        {219, 19, 83, 69},
-        {242, 10, 34, 92},
-        {45, 38, 49, 76},
-        {212, 212, 212, 213}
-    };
 
-    unsigned char reult[4][4];
-    mixColumns(foo);
-
-    for(int i = 0; i < 4; i++)
-    {
-        for(int j = 0; j < 4; j++)
-        {
-            //std::cout << (int)reult[i][j] << ' ';
-        }
-        //std::cout << std::endl;
     }
 
     return "";
