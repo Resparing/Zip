@@ -44,6 +44,11 @@ A small library used to help with C++ developers!
         - Linux
         - Unknown (If cannot find OS)
 
+4. Cryptography
+    - AES (ECB and CBC) Encryption and Decryption
+    - Base64 Encoding and Decoding
+    - SHA256 Hashing (Options with just Hashing, Salting, and Peppering)
+
 
 ### Options
 - Logging

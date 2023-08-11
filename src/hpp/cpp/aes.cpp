@@ -9,7 +9,8 @@
 #include <zip/print.hpp>
 #include <zip/typedefs.hpp>
 
-//Variables
+/* Variables */
+#pragma region Variables
 const uint8_t sBox[256] =
 {
     0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76,
@@ -50,8 +51,10 @@ const uint8_t rCon[256] =
     0X61, 0XC2, 0X9F, 0X25, 0X4A, 0X94, 0X33, 0X66, 0XCC, 0X83, 0X1D, 0X3A, 0X74, 0XE8, 0XCB, 0X8D
 };
 
+#pragma endregion
+
 /* Helper Functions */
-#pragma region
+#pragma region Helper Functions
 
 //String to 3D Array of 4x4 grids
 void transformString(string_t plainText, int32_t numBlocks, unsigned char message[][4][4])
@@ -112,7 +115,10 @@ void mixColumn(unsigned char cipherColumn[4], unsigned char result[4])
 }
 
 //Expand Keys
-void keyExpansion(){}
+void keyExpansion(string_t key, uint8_t rounds, unsigned char roundKeys[][4][4])
+{
+
+}
 
 //Add Round Key
 void addRoundKey(unsigned char cipherBlock[4][4], unsigned char roundKey[4][4])
@@ -248,27 +254,27 @@ string_t encryptECB(string_t plainText, string_t key)
         }
 
        //Create Round Key
-        unsigned char roundKey[4][4];
+        unsigned char roundKey[numRounds][4][4];
 
         //Key Expansion
-        keyExpansion();
+        keyExpansion(key, numRounds, roundKey);
 
         //Initial Add Round Key
-        addRoundKey(cipherBlock, roundKey);
+        addRoundKey(cipherBlock, roundKey[0]);
 
         //Rounds
-        for(uint8_t rounds = 0; rounds < numRounds - 1; rounds++)
+        for(uint8_t rounds = 1; rounds < numRounds; rounds++)
         {
             subBytes(cipherBlock);
             shiftRows(cipherBlock);
             mixColumns(cipherBlock);
-            addRoundKey(cipherBlock, roundKey);
+            addRoundKey(cipherBlock, roundKey[numRounds]);
         }
 
         //Final Rounds
         subBytes(cipherBlock);
         shiftRows(cipherBlock);
-        addRoundKey(cipherBlock, roundKey);
+        addRoundKey(cipherBlock, roundKey[numRounds]);
 
     }
 
