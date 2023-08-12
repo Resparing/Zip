@@ -5,6 +5,7 @@
 #include <cmath>
 #include <string>
 #include <iomanip>
+#include <string>
 
 #include <zip/print.hpp>
 #include <zip/typedefs.hpp>
@@ -228,7 +229,7 @@ void mixColumns(unsigned char cipherBlock[4][4])
 string_t encryptECB(string_t plainText, string_t key)
 {
     //Amount of plainText Blocks
-    const int32_t numBlocks = ceil(plainText.length() / 16.0f);
+    const uint32_t numBlocks = ceil(plainText.length() / 16.0f);
 
     //Array of 256 bit segments of plainText
     unsigned char message[numBlocks][4][4];
