@@ -3,7 +3,6 @@
 
 //Includes
 #include <cmath>
-#include <string>
 #include <iomanip>
 #include <string>
 
@@ -118,7 +117,7 @@ void mixColumn(unsigned char cipherColumn[4], unsigned char result[4])
 //Expand Keys
 void keyExpansion(string_t key, uint8_t rounds, unsigned char roundKeys[][4][4])
 {
-
+    
 }
 
 //Add Round Key
