@@ -5,10 +5,12 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 
-#include <zip/zipOptions.hpp>
+#include <zip/crypt.hpp>
 #include <zip/typedefs.hpp>
+#include <zip/zipOptions.hpp>
 
 namespace PRIVATE
 {
@@ -39,6 +41,10 @@ namespace PRIVATE
 
         file.close();
     }
+
+    //File Variables
+    static std::fstream file;
+    static std::streambuf* originalCoutBuffer;
 }
 
 //Macros
@@ -47,14 +53,40 @@ namespace PRIVATE
 #define printLogError(...) fullPrintLogError(__LINE__, __FILE__, __VA_ARGS__)
 
 
-/* Functions */
+/* Main Functions */
 
-//Clear Log
-static void clearLog(void)
+//Open Log
+static void openLog(void)
 {
-    std::fstream file;
-    file.open(PRINT::logPath, std::fstream::in | std::fstream::out | std::fstream::trunc);
-    file.close();
+    //Clear Buffer
+    std::cout << std::endl;
+
+    //Open File
+    PRIVATE::file.open(PRINT::logPath, std::fstream::in | std::fstream::out | std::fstream::trunc);
+
+    //If std::cout Logging is Enabled
+    if(PRINT::logToFile == true)
+    {
+        //Change Output
+        PRIVATE::originalCoutBuffer = std::cout.rdbuf();
+        std::cout.rdbuf(PRIVATE::file.rdbuf());
+    }
+}
+
+static void closeLog(void)
+{
+    //If std::cout Logging is Enabled
+    if(PRINT::logToFile == true)
+    {
+        //Redirect Print Statements
+        std::cout.rdbuf(PRIVATE::originalCoutBuffer);
+    }
+
+    //Clear Buffer
+    std::cout << std::endl;
+
+    //Close File
+    PRIVATE::file.close();
 }
 
 //Prints to the Screen
