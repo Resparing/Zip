@@ -15,6 +15,9 @@ namespace PRINT
     //Encryption Key
     const string_t key = "Input Your Password Here! MUST BE IN BASE64!!!";
 
+    //Log Items to a Log File
+    const bool logToFile = false;
+
     //Log File Path
     const string_t logPath = "bin/Log.txt";
 
