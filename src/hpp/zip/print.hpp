@@ -98,6 +98,12 @@ void fullPrintLog(const int32_t lineNumber, const string_t filePath, const Args&
     string_t message = PRIVATE::joinArgs(' ', args...);
     string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Encrypt Logs if Needed
+    if(PRINT::encryptLogs == true)
+    {
+        fullMessage = base64::encode(AES::encrypt(fullMessage, base64::decode(PRINT::key), AES_ECB));
+    }
+
     //Add to Log
     PRIVATE::appendLog(fullMessage);
 
@@ -114,11 +120,24 @@ void fullPrintLogWarning(const int32_t lineNumber, const string_t filePath, cons
     string_t message = PRIVATE::joinArgs(' ', args...);
     string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Encrypt Logs if Needed
+    if(PRINT::encryptLogs == true)
+    {
+        fullMessage = base64::encode(AES::encrypt(fullMessage, base64::decode(PRINT::key), AES_ECB));
+    }
+
     //Add to Log
     PRIVATE::appendLog(fullMessage);
 
     //Output Message
-    std::cout << fullMessage << '\n';
+    if(PRINT::enableRuntimeWarningLogging == true)
+    {
+        std::cerr << fullMessage << '\n';
+    }
+    else
+    {
+        std::cout << fullMessage << '\n';
+    }
 }
 
 //Prints Error to the Screen
@@ -130,9 +149,23 @@ void fullPrintLogError(const int32_t lineNumber, const string_t filePath, const 
     string_t message = PRIVATE::joinArgs(' ', args...);
     string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
 
+    //Encrypt Logs if Needed
+    if(PRINT::encryptLogs == true)
+    {
+        fullMessage = base64::encode(AES::encrypt(fullMessage, base64::decode(PRINT::key), AES_ECB));
+    }
+
     //Add to Log
     PRIVATE::appendLog(fullMessage);
 
     //Output Message
-    std::cout << fullMessage << '\n';
+    if(PRINT::enableRuntimeErrorLogging == true)
+    {
+        std::cerr << fullMessage << '\n';
+    }
+    else
+    {
+        std::cout << fullMessage << '\n';
+    }
+}
 }
