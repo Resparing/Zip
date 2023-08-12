@@ -5,9 +5,11 @@
 
 int main(void)
 {
-    clearLog();
+    openLog();
 
-    printLog("Hello, World!");
+
+
+    closeLog();
 
     return EXIT_SUCCESS;
 }
