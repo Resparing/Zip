@@ -14,6 +14,14 @@ A small library used to help with C++ developers!
         3. printLogError
             - Will Print the Script Directory, Line Number, Error Symbol and Message (Can Have Multiple Messages)
 
+        4. printArray
+            - Will Print a 1D Array, no Line Numbers or File
+
+        4. printArray2D
+            - Will Print a 2D Array, no Line Numbers or File
+
+        4. printArray3D
+            - Will Print a 3D Array, no Line Numbers or File
 
 2. Typedefs
     - All Integer typedefs Including:
@@ -53,6 +61,21 @@ A small library used to help with C++ developers!
 ### Options
 - Logging
     1. Encrypt Logs(Will Encrypt With AES Encryption)
-    2. Will Save Logs to a Log File
-    3. Error Logs Will Throw Runtime Errors
-    4. Warning Logs Will Throw Runtime Errors
+    2. Will Save `std::cout` to a Log File (Log Functions will Automatically Save)
+    3. A Log File Path
+    4. Error Logs Will Throw Runtime Errors
+    5. Warning Logs Will Throw Runtime Errors
+
+
+### UNFINISHED FUNCTIONS / TODO
+- printArray()
+- printArray2D()
+- printArray3D()
+
+- AES generateKey()
+- AES Encrypt() - Working on Currently
+- AES Decrypt()
+
+- SHA 256 Hash
+- SHA 256 Hash with Salt
+- SHA 256 Hash with Salt and Pepper
