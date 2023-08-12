@@ -168,4 +168,21 @@ void fullPrintLogError(const int32_t lineNumber, const string_t filePath, const 
         std::cout << fullMessage << '\n';
     }
 }
+
+//Prints an Array
+void printArray(const auto array[])
+{
+    
+}
+
+template <typename T, size_t Rows, size_t Cols>
+void printArray2D(const T (&array)[Rows][Cols])
+{
+    
+}
+
+template <typename T, size_t Depth, size_t Rows, size_t Cols>
+void printArray3D(const T (&array)[Depth][Rows][Cols])
+{
+    
 }
