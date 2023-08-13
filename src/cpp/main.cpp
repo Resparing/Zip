@@ -11,6 +11,5 @@ int main(void)
 
 
     closeLog();
-
     return EXIT_SUCCESS;
 }

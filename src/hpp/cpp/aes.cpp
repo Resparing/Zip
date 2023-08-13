@@ -72,11 +72,11 @@ void transformString(string_t plainText, int32_t numBlocks, unsigned char messag
         }
 
         //Fill Out Message
-        for(uint8_t rows = 0; rows < 4; rows++)
+        for(uint8_t row = 0; row < 4; row++)
         {
-            for(uint8_t cols = 0; cols < 4; cols++)
+            for(uint8_t col = 0; col < 4; col++)
             {
-                message[numTables][cols][rows] = cutPlainText[rows * 4 + cols];
+                message[numTables][col][row] = cutPlainText[row * 4 + col];
             }
         }
     }
@@ -124,11 +124,11 @@ void keyExpansion(string_t key, uint8_t rounds, unsigned char roundKeys[][4][4])
 void addRoundKey(unsigned char cipherBlock[4][4], unsigned char roundKey[4][4])
 {
     //Iterate Through Array
-    for(uint8_t rows = 0; rows < 4; rows++)
+    for(uint8_t row = 0; row < 4; row++)
     {
-        for(uint8_t cols = 0; cols < 4; cols++)
+        for(uint8_t col = 0; col < 4; col++)
         {
-            cipherBlock[rows][cols] ^= roundKey[rows][cols];
+            cipherBlock[row][col] ^= roundKey[row][col];
         }
     }
 }
@@ -137,12 +137,12 @@ void addRoundKey(unsigned char cipherBlock[4][4], unsigned char roundKey[4][4])
 void subBytes(unsigned char cipherBlock[4][4])
 {
     //Iterate Through Array
-    for(uint8_t rows = 0; rows < 4; rows++)
+    for(uint8_t row = 0; row < 4; row++)
     {
-        for(uint8_t cols = 0; cols < 4; cols++)
+        for(uint8_t col = 0; col < 4; col++)
         {
             //Look up Value in sBox
-            cipherBlock[rows][cols] = sBox[cipherBlock[rows][cols]];
+            cipherBlock[row][col] = sBox[cipherBlock[row][col]];
         }
     }
 }
@@ -175,11 +175,11 @@ void shiftRows(unsigned char cipherBlock[4][4])
     shiftedState[3][3] = cipherBlock[3][2];
 
     //Copy Back Into Array
-    for(uint8_t rows = 0; rows < 4; rows++)
+    for(uint8_t row = 0; row < 4; row++)
     {
-        for(uint8_t cols = 0; cols < 4; cols++)
+        for(uint8_t col = 0; col < 4; col++)
         {
-            cipherBlock[rows][cols] = shiftedState[rows][cols];
+            cipherBlock[row][col] = shiftedState[row][col];
         }
     }
 }
@@ -191,34 +191,34 @@ void mixColumns(unsigned char cipherBlock[4][4])
     unsigned char mixedState[4][4];
 
     //Iterate Over Columns
-    for(uint8_t cols = 0; cols < 4; cols++)
+    for(uint8_t col = 0; col < 4; col++)
     {
         //Column and Result Array
         unsigned char column[4];
         unsigned char result[4];
 
         //Fill Out Column Array
-        for(uint8_t rows = 0; rows < 4; rows++)
+        for(uint8_t row = 0; row < 4; row++)
         {
-            column[rows] = cipherBlock[rows][cols];
+            column[row] = cipherBlock[row][col];
         }
 
         //Convert Column
         mixColumn(column, result);
 
         //Add Column to State
-        for(uint8_t rows = 0; rows < 4; rows++)
+        for(uint8_t row = 0; row < 4; row++)
         {
-            mixedState[rows][cols] = result[rows];
+            mixedState[row][col] = result[row];
         }
     }
 
     //Copy Back Into Array
-    for(uint8_t rows = 0; rows < 4; rows++)
+    for(uint8_t row = 0; row < 4; row++)
     {
-        for(uint8_t cols = 0; cols < 4; cols++)
+        for(uint8_t col = 0; col < 4; col++)
         {
-            cipherBlock[rows][cols] = mixedState[rows][cols];
+            cipherBlock[row][col] = mixedState[row][col];
         }
     }
 }
@@ -245,15 +245,15 @@ string_t encryptECB(string_t plainText, string_t key)
         unsigned char cipherBlock[4][4];
 
         //Fill Out Cipher Block
-        for(uint8_t rows = 0; rows < 4; rows++)
+        for(uint8_t row = 0; row < 4; row++)
         {
-            for(uint8_t cols = 0; cols < 4; cols++)
+            for(uint8_t col = 0; col < 4; col++)
             {
-                cipherBlock[cols][rows] = message[i][cols][rows];
+                cipherBlock[row][col] = message[i][row][col];
             }
         }
 
-       //Create Round Key
+        //Create Round Key
         unsigned char roundKey[numRounds][4][4];
 
         //Key Expansion
@@ -263,12 +263,12 @@ string_t encryptECB(string_t plainText, string_t key)
         addRoundKey(cipherBlock, roundKey[0]);
 
         //Rounds
-        for(uint8_t rounds = 1; rounds < numRounds; rounds++)
+        for(uint8_t round = 1; round < numRounds; round++)
         {
             subBytes(cipherBlock);
             shiftRows(cipherBlock);
             mixColumns(cipherBlock);
-            addRoundKey(cipherBlock, roundKey[numRounds]);
+            addRoundKey(cipherBlock, roundKey[round]);
         }
 
         //Final Rounds
