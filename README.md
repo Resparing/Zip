@@ -53,7 +53,7 @@ A small library used to help with C++ developers!
         - Unknown (If cannot find OS)
 
 4. Cryptography
-    - AES (ECB and CBC) Encryption and Decryption
+    - AES (ECB and CBC) Encryption and Decryption (Made By [SergeyBel]https://github.com/SergeyBel/AES)
     - Base64 Encoding and Decoding
     - SHA256 Hashing (Options with just Hashing, Salting, and Peppering)
 

@@ -2,7 +2,7 @@
 #pragma once
 
 //Include Headers
-#include <zip/typedefs.hpp>
+#include <zip/Typedefs.hpp>
 
 //Macros
 #define AES_ECB "\0"

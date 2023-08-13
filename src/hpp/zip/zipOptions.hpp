@@ -4,8 +4,8 @@
 //Includes
 #include <string>
 
-#include <zip/crypt.hpp>
-#include <zip/typedefs.hpp>
+#include <zip/Crypt.hpp>
+#include <zip/Typedefs.hpp>
 
 namespace PRINT
 {

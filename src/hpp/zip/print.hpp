@@ -8,8 +8,8 @@
 #include <stdexcept>
 #include <string>
 
-#include <zip/crypt.hpp>
-#include <zip/typedefs.hpp>
+#include <zip/Crypt.hpp>
+#include <zip/Typedefs.hpp>
 #include <zip/zipOptions.hpp>
 
 namespace PRIVATE
