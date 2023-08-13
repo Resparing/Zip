@@ -67,6 +67,7 @@ A small library used to help with C++ developers!
     5. Warning Logs Will Throw Runtime Errors
 
 <hr>
+
 ### UNFINISHED FUNCTIONS / TODO
 - printArray()
 - printArray2D()
