@@ -6,14 +6,14 @@ APP_DIR = bin/
 LOG_PATH = bin/log.txt
 
 #C++ Files
-CPP_FILES = $(wildcard src/cpp/*.cpp) $(wildcard src/hpp/cpp/*.cpp)
+CPP_FILES = $(wildcard src/cpp/*.cpp) $(wildcard src/hpp/cpp/*.cpp) $(wildcard lib/*.cpp)
 
 #C++ Standard
 CPP_VERSION = -std=c++20
 
 #Includes
-INC_DIR = "-Ilib/hpp" "-Isrc/hpp"
-INC_LIB = "-Llib/inc"
+INC_DIR = "-Ilib/" "-Isrc/hpp"
+INC_LIB = "-Llib/"
 INC_DYLIB = 
 INC_FLAGS =
 
