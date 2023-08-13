@@ -66,7 +66,7 @@ A small library used to help with C++ developers!
     4. Error Logs Will Throw Runtime Errors
     5. Warning Logs Will Throw Runtime Errors
 
-
+<hr>
 ### UNFINISHED FUNCTIONS / TODO
 - printArray()
 - printArray2D()
