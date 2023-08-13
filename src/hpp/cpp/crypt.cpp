@@ -1,13 +1,13 @@
 //Include Header File
-#include "../zip/crypt.hpp"
+#include "../zip/Crypt.hpp"
 
 //Include Headers
 #include <bitset>
 #include <string>
 #include <vector>
 
-#include <zip/typedefs.hpp>
-#include <zip/print.hpp>
+#include <zip/Typedefs.hpp>
+#include <zip/Print.hpp>
 
 //Base64 Character Table
 const string_t base64IndexTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
