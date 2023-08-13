@@ -5,7 +5,8 @@
 #include <zip/Typedefs.hpp>
 
 //Macros
-#define AES_ECB "\0"
+#define AES_ECB 1
+#define AES_CBC 2
 
 namespace base64
 {
