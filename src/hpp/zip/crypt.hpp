@@ -19,8 +19,8 @@ namespace AES
     string_t generateKey(int length);
 
 
-    string_t encrypt(string_t plainText, string_t key, string_t iv);
-    string_t decrypt(string_t cipherText, string_t key, string_t iv);
+    string_t encrypt(string_t plainText, string_t key, uint8_t mode, string_t iv = "\0");
+    string_t decrypt(string_t cipherText, string_t key, uint8_t mode, string_t iv = "\0");
 }
 
 namespace SHA
