@@ -5,12 +5,11 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <stdexcept>
 #include <string>
 
 #include <zip/Crypt.hpp>
 #include <zip/Typedefs.hpp>
-#include <zip/zipOptions.hpp>
+#include <zip/ZipOptions.hpp>
 
 namespace PRIVATE
 {
