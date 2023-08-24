@@ -12,9 +12,6 @@ namespace PRINT
     //Will Encrpt Logs
     const bool encryptLogs = false;
 
-    //Encryption Key
-    const string_t key = "Input Your Password Here! MUST BE IN BASE64!!!";
-
     //Log Items to a Log File
     const bool logToFile = false;
 
