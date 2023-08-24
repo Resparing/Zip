@@ -6,8 +6,8 @@
 #include <iomanip>
 #include <string>
 
-#include <zip/print.hpp>
-#include <zip/typedefs.hpp>
+#include <zip/Print.hpp>
+#include <zip/Typedefs.hpp>
 
 /* Variables */
 #pragma region Variables
@@ -117,7 +117,23 @@ void mixColumn(unsigned char cipherColumn[4], unsigned char result[4])
 //Expand Keys
 void keyExpansion(string_t key, uint8_t rounds, unsigned char roundKeys[][4][4])
 {
-    
+    //Put Key Into First Round
+    for(uint8_t row = 0; row < 4; row++)
+    {
+        for(uint8_t col = 0; col < 4; col++)
+        {
+            //Key Should be Top-Bottom, not Left-Right
+            roundKeys[0][col][row] = key[row * 4 + col];
+        }
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            std::cout << roundKeys[0][i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
 }
 
 //Add Round Key
@@ -263,7 +279,7 @@ string_t encryptECB(string_t plainText, string_t key)
         addRoundKey(cipherBlock, roundKey[0]);
 
         //Rounds
-        for(uint8_t round = 1; round < numRounds; round++)
+        for(uint8_t round = 1; round < numRounds - 1; round++)
         {
             subBytes(cipherBlock);
             shiftRows(cipherBlock);
@@ -298,7 +314,7 @@ string_t AES::generateKey(int length)
     }
 }
 
-string_t AES::encrypt(string_t plainText, string_t key, string_t iv)
+string_t AES::encrypt(string_t plainText, string_t key, uint8_t mode, string_t iv)
 {
     if(key.length() != 16 && key.length() != 24 && key.length() != 32)
     {
