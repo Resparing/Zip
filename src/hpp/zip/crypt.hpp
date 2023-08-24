@@ -25,5 +25,7 @@ namespace AES
 
 namespace SHA
 {
-    string_t hash();
+    string_t hash(string_t text);
+    string_t hash(string_t text, string_t salt);
+    string_t hash(string_t text, string_t salt, string_t pepepr);
 }
