@@ -12,10 +12,10 @@ CPP_FILES = $(wildcard src/cpp/*.cpp) $(wildcard src/hpp/cpp/*.cpp) $(wildcard l
 CPP_VERSION = -std=c++20
 
 #Includes
-INC_DIR = "-Ilib/" "-Isrc/hpp"
-INC_LIB = "-Llib/"
-INC_DYLIB = 
-INC_FLAGS =
+INC_DIR = "-Ilib/hpp/" "-Isrc/hpp"
+INC_LIB = "-Llib/inc/"
+INC_DYLIB = -Wl,-rpath, "lib/inc"
+INC_FLAGS = -lssl.3 -lcrypto.3
 
 #Combine All "INC" Variables into one
 INC = $(INC_DIR) $(INC_LIB) $(INC_DYLIB) $(INC_FLAGS)
