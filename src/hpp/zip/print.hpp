@@ -169,9 +169,16 @@ void fullPrintLogError(const int32_t lineNumber, const string_t filePath, const 
 }
 
 //Prints an Array
-void printArray(const auto array[])
+template <typename T, size_t Rows>
+void printArray(const T (&array)[Rows])
 {
-    
+    //Message String
+    string_t message;
+
+    for(uint32_t i = 0; i < Rows; i++)
+    {
+        
+    }
 }
 
 template <typename T, size_t Rows, size_t Cols>
