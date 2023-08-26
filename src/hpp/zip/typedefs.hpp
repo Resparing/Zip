@@ -1,9 +1,6 @@
 //Header Guard
 #pragma once
 
-//Includes
-#include <string>
-
 /* Integer */
 //8 Bit Integer
 #ifndef _INT8_T
@@ -59,4 +56,15 @@ typedef float float32_t;  //32 Bit Floating Point Number
 typedef double float64_t;  //64 Bit Floating Point Number
 
 /* String */
-typedef std::string string_t;
+#ifdef _LIBCPP_STRING
+    typedef std::string string_t;
+#endif
+
+/* Exit Codes */
+#ifndef EXIT_SUCCESS
+    #define EXIT_SUCCESS 0
+#endif
+
+#ifndef EXIT_FAILURE
+    #define EXIT_FAILURE 1
+#endif
