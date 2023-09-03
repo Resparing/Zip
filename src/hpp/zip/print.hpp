@@ -14,7 +14,7 @@
 namespace PRIVATE
 {
     template <typename... Args>
-    static string_t joinArgs(const char delimeter, const Args&... args)
+    static string joinArgs(const char delimeter, const Args&... args)
     {
         std::ostringstream oss;
 
@@ -31,7 +31,7 @@ namespace PRIVATE
     }
 
     //Add to File Log
-    static void appendLog(const string_t message)
+    static void appendLog(const string message)
     {
         std::fstream file;
         file.open(PRINT::logPath, std::fstream::in | std::fstream::out | std::fstream::app);
@@ -90,12 +90,12 @@ static void closeLog(void)
 
 //Prints to the Screen
 template <typename... Args>  //Template
-void fullPrintLog(const int32_t lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLog(const int32_t lineNumber, const string filePath, const Args&... args)
 {
     //Concatenate Message
-    string_t information = PRIVATE::joinArgs('\0', '[', filePath, ": ", lineNumber, "] ");
-    string_t message = PRIVATE::joinArgs(' ', args...);
-    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string information = PRIVATE::joinArgs('\0', '[', filePath, ": ", lineNumber, "] ");
+    string message = PRIVATE::joinArgs(' ', args...);
+    string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Encrypt Logs if Needed
     if(PRINT::encryptLogs == true)
@@ -112,12 +112,12 @@ void fullPrintLog(const int32_t lineNumber, const string_t filePath, const Args&
 
 //Prints Warning to the Screen
 template <typename... Args>  //Template
-void fullPrintLogWarning(const int32_t lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLogWarning(const int32_t lineNumber, const string filePath, const Args&... args)
 {
     //Concatenate Message
-    string_t information = PRIVATE::joinArgs('\0', "[� ", filePath, ": ", lineNumber, "] ");
-    string_t message = PRIVATE::joinArgs(' ', args...);
-    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string information = PRIVATE::joinArgs('\0', "[� ", filePath, ": ", lineNumber, "] ");
+    string message = PRIVATE::joinArgs(' ', args...);
+    string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Encrypt Logs if Needed
     if(PRINT::encryptLogs == true)
@@ -141,12 +141,12 @@ void fullPrintLogWarning(const int32_t lineNumber, const string_t filePath, cons
 
 //Prints Error to the Screen
 template <typename... Args>  //Template
-void fullPrintLogError(const int32_t lineNumber, const string_t filePath, const Args&... args)
+void fullPrintLogError(const int32_t lineNumber, const string filePath, const Args&... args)
 {
     //Concatenate Message
-    string_t information = PRIVATE::joinArgs('\0', "[⚠️ ", filePath, ": ", lineNumber, "] ");
-    string_t message = PRIVATE::joinArgs(' ', args...);
-    string_t fullMessage = PRIVATE::joinArgs('\0', information, message);
+    string information = PRIVATE::joinArgs('\0', "[⚠️ ", filePath, ": ", lineNumber, "] ");
+    string message = PRIVATE::joinArgs(' ', args...);
+    string fullMessage = PRIVATE::joinArgs('\0', information, message);
 
     //Encrypt Logs if Needed
     if(PRINT::encryptLogs == true)
@@ -173,7 +173,7 @@ template <typename T, size_t Rows>
 void printArray(const T (&array)[Rows])
 {
     //Message String
-    string_t message;
+    string message;
 
     for(uint32_t i = 0; i < Rows; i++)
     {

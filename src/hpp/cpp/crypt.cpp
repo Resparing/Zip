@@ -10,14 +10,14 @@
 #include <zip/Print.hpp>
 
 //Base64 Character Table
-const string_t base64IndexTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const string base64IndexTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 /* Main Functions */
 
-string_t base64::encode(const string_t plainText)
+string base64::encode(const string plainText)
 {
     //Binary String
-    string_t binaryString;
+    string binaryString;
 
     //Turn cipherText Into Binary String
     for(char c : plainText)
@@ -36,7 +36,7 @@ string_t base64::encode(const string_t plainText)
     }
 
     //Ending Equal Signs
-    string_t padding;
+    string padding;
 
     //Make Sure the Text is the Correct Size, Appending Equal Signs
     while(binaryString.length() % 6 != 0)
@@ -46,13 +46,13 @@ string_t base64::encode(const string_t plainText)
     }
 
     //CipherText
-    string_t cipherText;
+    string cipherText;
 
     //Iterate Over Binary String
     for(size_t i = 0; i < binaryString.length(); i += 6)
     {
         //Bits String
-        string_t bits;
+        string bits;
 
         //Turn bits into a Byte
         for(size_t j = 0; j < 6; j++)
@@ -71,7 +71,7 @@ string_t base64::encode(const string_t plainText)
     return cipherText + padding;
 }
 
-string_t base64::decode(string_t cipherText)
+string base64::decode(string cipherText)
 {
     //Figure out Amount of Padding
     uint16_t padding = 0;
@@ -88,7 +88,7 @@ string_t base64::decode(string_t cipherText)
     cipherText.erase(std::remove(cipherText.begin(), cipherText.end(), '='), cipherText.end());
 
     //Binary String
-    string_t binaryString;
+    string binaryString;
 
     //Turn cipherText Into Binary String
     for(char c : cipherText)
@@ -113,13 +113,13 @@ string_t base64::decode(string_t cipherText)
     }
 
     //PlainText String
-    string_t plainText;
+    string plainText;
 
     //Iterate Over String
     for(size_t i = 0; i < binaryString.length(); i += 8)
     {
         //Byte String
-        string_t byte;
+        string byte;
 
         //Turn bits into a Byte
         for(size_t j = 0; j < 8; j++)

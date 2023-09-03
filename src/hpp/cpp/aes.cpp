@@ -9,21 +9,21 @@
 #include <zip/Print.hpp>
 #include <zip/Typedefs.hpp>
 
-string_t encryptECB(string_t plainText, string_t key)
+string encryptECB(string plainText, string key)
 {
     
 
     return "";
 }
 
-string_t encryptCBC(string_t plainText, string_t key, string_t iv)
+string encryptCBC(string plainText, string key, string iv)
 {
     return "";
 }
 
 
 /* Main Functions */
-string_t AES::generateKey(int length)
+string AES::generateKey(int length)
 {
     if(length!= 16 && length != 24 && length != 32)
     {
@@ -33,7 +33,7 @@ string_t AES::generateKey(int length)
     }
 }
 
-string_t AES::encrypt(string_t plainText, string_t key, uint8_t mode, string_t iv)
+string AES::encrypt(string plainText, string key, uint8_t mode, string iv)
 {
     if(key.length() != 16 && key.length() != 24 && key.length() != 32)
     {
@@ -52,7 +52,7 @@ string_t AES::encrypt(string_t plainText, string_t key, uint8_t mode, string_t i
     }
 }
 
-string_t decrypt(string_t cipherText, string_t key, string_t iv)
+string decrypt(string cipherText, string key, string iv)
 {
 
 }

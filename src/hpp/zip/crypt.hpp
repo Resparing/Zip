@@ -10,22 +10,22 @@
 
 namespace base64
 {
-    string_t encode(string_t plainText);
-    string_t decode(string_t cipherText);
+    string encode(string plainText);
+    string decode(string cipherText);
 }
 
 namespace AES
 {
-    string_t generateKey(int length);
+    string generateKey(int length);
 
 
-    string_t encrypt(string_t plainText, string_t key, uint8_t mode, string_t iv = "\0");
-    string_t decrypt(string_t cipherText, string_t key, uint8_t mode, string_t iv = "\0");
+    string encrypt(string plainText, string key, uint8_t mode, string iv = "\0");
+    string decrypt(string cipherText, string key, uint8_t mode, string iv = "\0");
 }
 
 namespace SHA
 {
-    string_t hash(string_t text);
-    string_t hash(string_t text, string_t salt);
-    string_t hash(string_t text, string_t salt, string_t pepepr);
+    string hash(string text);
+    string hash(string text, string salt);
+    string hash(string text, string salt, string pepepr);
 }

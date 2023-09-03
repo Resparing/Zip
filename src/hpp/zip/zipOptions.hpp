@@ -16,7 +16,7 @@ namespace PRINT
     const bool logToFile = false;
 
     //Log File Path
-    const string_t logPath = "bin/Log.txt";
+    const string logPath = "bin/Log.txt";
 
     //Warning Logs Will Give Runtime Errors
     const bool enableRuntimeWarningLogging = false;

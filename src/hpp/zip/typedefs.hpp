@@ -57,7 +57,7 @@ typedef double float64_t;  //64 Bit Floating Point Number
 
 /* String */
 #ifdef _LIBCPP_STRING
-    typedef std::string string_t;
+    typedef std::string string;
 #endif
 
 /* Exit Codes */
@@ -68,3 +68,5 @@ typedef double float64_t;  //64 Bit Floating Point Number
 #ifndef EXIT_FAILURE
     #define EXIT_FAILURE 1
 #endif
+
+/* Miscellaneous */
